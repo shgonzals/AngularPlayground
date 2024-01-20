@@ -1,0 +1,40 @@
+<mat-accordion>
+  @for(item of items; track item){
+    <mat-expansion-panel hideToggle>
+
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ item.title }}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{ item.description }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-form-field>
+          <mat-label>First name</mat-label>
+          <input matInput>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Age</mat-label>
+          <input matInput type="number" min="1">
+        </mat-form-field>
+
+
+        @if(isEditing(item)){
+          <!-- Contenido editable aquí -->
+          <div>
+            <p>Contenido editable para {{ item.title }}</p>
+            <!-- Agrega tus campos de edición aquí -->
+          </div>
+        }
+
+        <mat-action-row>
+          <button mat-button color="primary">
+            <mat-icon>edit</mat-icon>
+            Edit</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+  }
+</mat-accordion>
