@@ -1,0 +1,14 @@
+<div class="sidenav-header">
+  <div class="header-text">
+      <h2>Prueba</h2>
+      <p>Test</p>
+  </div>
+</div>
+<mat-nav-list>
+  @for (item of items; track item) {
+    <a mat-list-item>
+      <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+      <span matListItemMeta>{{ item.label }}</span>
+    </a>
+  }
+</mat-nav-list>
