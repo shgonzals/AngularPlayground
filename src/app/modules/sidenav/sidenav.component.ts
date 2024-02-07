@@ -29,13 +29,17 @@ export class SidenavComponent {
   items: MenuItem[] = [
     {
       icon: 'list',
-      label: 'Listado',
+      label: 'List',
       route: 'list'
     },
     {
       icon: 'edit',
-      label: 'test',
+      label: 'Test',
       route: 'test'
+    },{
+      icon: 'table',
+      label: 'Table',
+      route: 'table'
     }
   ];
 }
