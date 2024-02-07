@@ -1,27 +1,16 @@
 
 .item.mat-icon{
-  color: white; /* Establece el color del texto en blanco */
+  color: white;
 }
 
-.sidenav-header{
-  padding-top: 24px;
-  text-align: center;
-
-  .header-text{
-    > h2 {
-      margin: 0;
-      font-size: 1rem;
-      line-height: 1.5rem;
-    }
-
-    > p {
-      margin: 0;
-      font-size: 0.8rem;
-    }
-  }
+.fade-in-out {
+  transition: opacity 0.5s ease-in-out;
 }
 
-.hide-header-text{
+.fade-out {
   opacity: 0;
-  height: 0px;
+}
+
+.fade-in {
+  opacity: 1;
 }

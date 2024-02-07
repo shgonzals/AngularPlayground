@@ -1,16 +1,16 @@
 
-<mat-nav-list>
-
+<mat-nav-list  >
   @for (item of items; track item) {
     <a mat-list-item
       [routerLink]="item.route"
       routerLinkActive
       #rla="routerLinkActive"
       [activated]="rla.isActive"
+      style="margin-top: 5px"
     >
       <mat-icon matListItemIcon class="item">{{ item.icon }}</mat-icon>
       @if(!sideNavCollapsed()){
-        <span matListItemTitle style="color: white;">{{ item.label }}</span>
+        <span matListItemTitle style="color: white;"  >{{ item.label }}</span>
       }
 
     </a>

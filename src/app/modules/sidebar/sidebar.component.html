@@ -1,18 +1,18 @@
 <mat-sidenav-container >
-  <mat-sidenav opened mode="side" [style.width]="sidenavWidth()" class="sidenav">
+  <mat-sidenav [@collapseMenu]="collapsed() ? 'collapsed' : 'expanded'" opened mode="side" [style.width]="sidenavWidth()" >
     <div>
-      <button mat-icon-button (click)="collapsed.set(!collapsed())">
+      <button mat-icon-button (click)="toggleMenu()" style="margin-top: 5px;">
         <div class="square">
           <div class="t-symbol">T</div>
         </div>
       </button>
-      @if(!collapsed()){
-        <span style="color: white; font-size: larger;">askify</span>
+      @if(!collapsed() && isAskifyVisible){
+        <span  style="color: white; font-size: larger;">askify</span>
       }
     </div>
-    <app-sidenav [collapsed]="collapsed()" />
+    <app-sidenav [collapsed]="collapsed()"  />
   </mat-sidenav>
-  <mat-sidenav-content class="content" [style.margin-left]="sidenavWidth()">
-     <router-outlet></router-outlet>
+  <mat-sidenav-content [style.margin-left.px]="collapsed() ? 55 : 250" [@fadeInOut] class="content">
+     <router-outlet ></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

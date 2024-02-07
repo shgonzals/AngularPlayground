@@ -18,18 +18,17 @@ mat-sidenav-container{
 .square {
   width: 30px;
   height: 30px;
-  background-color: white;
-  border-radius: 10px;
+  background: linear-gradient(45deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+  border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid #263238;
-  margin-top: -5px;
+  margin-top: 5px;
 }
 
 .t-symbol {
-  color: #263238;
-  font-weight: bold;
+  color: white;
+  font-family: fantasy;
 }
 
 
@@ -44,21 +43,18 @@ mat-sidenav-container{
 }
 
 
-
-
-.sidenav-container {
-  height: 100%;
+.margin-left-20 {
+  margin-left: 20px;
 }
 
-.sidenav {
-  width: 200px;
+.fade-in-out {
+  transition: opacity 0.5s ease-in-out;
 }
 
-.content {
-  padding: 20px;
-  height: 100%;
+.fade-out {
+  opacity: 0;
 }
 
-.mat-toolbar {
-  background-color: transparent; /* Para eliminar el color de fondo de la barra superior */
+.fade-in {
+  opacity: 1;
 }
