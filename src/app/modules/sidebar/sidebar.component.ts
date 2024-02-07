@@ -7,6 +7,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidenavComponent } from '../sidenav/sidenav.component';
 import { ListComponent } from '../../components/list/list.component';
+import { MatListModule } from '@angular/material/list';
 
 @Component({
   selector: 'app-sidebar',
@@ -19,7 +20,8 @@ import { ListComponent } from '../../components/list/list.component';
     MatIconModule,
     MatSidenavModule,
     SidenavComponent,
-    ListComponent
+    ListComponent,
+    MatListModule
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
@@ -28,4 +30,7 @@ export class SidebarComponent {
   collapsed = signal(false);
 
   sidenavWidth = computed(() => this.collapsed() ? '65px' : '250px');
+
+
+
 }

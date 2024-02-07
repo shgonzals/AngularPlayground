@@ -1,11 +1,15 @@
-<mat-toolbar style="background-color: #673ab7;">
-  <button mat-icon-button style="color: antiquewhite;" (click)="collapsed.set(!collapsed())">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <p style="color: antiquewhite;">Angular Playground</p>
-</mat-toolbar>
-<mat-sidenav-container>
-  <mat-sidenav opened mode="side" [style.width]="sidenavWidth()">
+<mat-sidenav-container >
+  <mat-sidenav opened mode="side" [style.width]="sidenavWidth()" class="sidenav">
+    <div>
+      <button mat-icon-button (click)="collapsed.set(!collapsed())">
+        <div class="square">
+          <div class="t-symbol">T</div>
+        </div>
+      </button>
+      @if(!collapsed()){
+        <span style="color: white; font-size: larger;">askify</span>
+      }
+    </div>
     <app-sidenav [collapsed]="collapsed()" />
   </mat-sidenav>
   <mat-sidenav-content class="content" [style.margin-left]="sidenavWidth()">

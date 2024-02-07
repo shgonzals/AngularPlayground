@@ -28,18 +28,21 @@ export class SidenavComponent {
 
   items: MenuItem[] = [
     {
+      icon: 'home',
+      label: 'Home',
+      route: 'init'
+    },{
       icon: 'list',
       label: 'List',
-      route: 'list'
-    },
-    {
-      icon: 'edit',
-      label: 'Test',
-      route: 'test'
+      route: 'table'
     },{
       icon: 'table',
       label: 'Table',
-      route: 'table'
+      route: 'list'
+    },{
+      icon: 'edit',
+      label: 'Test',
+      route: 'test'
     }
   ];
 }

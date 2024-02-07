@@ -8,10 +8,57 @@ mat-toolbar{
 }
 
 mat-sidenav-container{
-  height: calc(100vh - 64px);
+  height: -webkit-fill-available;
 }
 
 .mat-drawer-content{
   overflow: scroll;
 }
 
+.square {
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #263238;
+  margin-top: -5px;
+}
+
+.t-symbol {
+  color: #263238;
+  font-weight: bold;
+}
+
+
+.mat-sidenav{
+  background: #263238;
+}
+
+.toolbar{
+  background-color: #263238;
+  display: flex;
+  align-items: center;
+}
+
+
+
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.content {
+  padding: 20px;
+  height: 100%;
+}
+
+.mat-toolbar {
+  background-color: transparent; /* Para eliminar el color de fondo de la barra superior */
+}

@@ -1,0 +1,14 @@
+.titulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.titulo h1 {
+  font-size: 100px;
+}
+
+.titulo h1 span {
+  color: #FF69B4; /* Cambia el color de la primera letra según sea necesario */
+}
