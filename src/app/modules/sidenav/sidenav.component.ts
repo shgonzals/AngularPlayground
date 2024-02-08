@@ -1,7 +1,7 @@
 import { Component, Input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
-import { MenuItem } from '../../models/MenuItem';
+import { MenuItem } from '../../models/menu-item';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { trigger, state, style, transition, animate } from '@angular/animations';
