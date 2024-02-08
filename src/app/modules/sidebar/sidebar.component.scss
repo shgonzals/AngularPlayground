@@ -28,9 +28,14 @@ mat-sidenav-container{
 
 .t-symbol {
   color: white;
-  font-family: fantasy;
+  font-family: sans-serif;
+  font-weight: 600;
 }
 
+.mat-divider{
+  background-color: #3b4c54;
+   margin-top: 25px;
+}
 
 .mat-sidenav{
   background: #263238;

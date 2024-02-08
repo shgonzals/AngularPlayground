@@ -8,6 +8,7 @@
 .titulo h1 {
   font-size: 60px;
   margin-top: 80px;
+  z-index: -10;
 }
 
 
@@ -15,16 +16,19 @@
   width: 100px;
   height: 100px;
   background: linear-gradient(45deg, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
-  border-radius: 5px;
+  border-radius: 15px;
   margin-top: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-right: 5px;
+  z-index: 10;
   font-size: 90px; /* Tamaño de la fuente ajustado para que sea más grande que la letra */
 }
 
 .t-symbol {
   color: white;
-  font-family: fantasy;
+  font-family: sans-serif;
+  font-weight: 600;
+  z-index: 10;
 }
