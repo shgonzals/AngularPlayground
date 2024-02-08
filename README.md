@@ -1,4 +1,4 @@
-![Logo de la aplicación](/images/Taskify.png)
+![Logo de la aplicación](/images/Taskify.webp)
 
 
 # Taskify Angular Application
