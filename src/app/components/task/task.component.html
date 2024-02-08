@@ -70,7 +70,12 @@
           <td mat-cell *matCellDef="let element">
             @if(element.editing){
               <mat-form-field class="input">
-                <input [formControl]="startDateControl" matInput required [matDatepicker]="picker" [(ngModel)]="element.startDate">
+                <input
+                  [formControl]="startDateControl"
+                  [max]="element.endDate"
+                  matInput required readonly
+                  [matDatepicker]="picker"
+                  [(ngModel)]="element.startDate">
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
 
@@ -91,7 +96,12 @@
           <td mat-cell *matCellDef="let element">
             @if(element.editing){
               <mat-form-field class="input">
-                <input [formControl]="endDateControl" matInput [matDatepicker]="picker" [(ngModel)]="element.endDate">
+                <input
+                  [formControl]="endDateControl"
+                  [min]="element.startDate"
+                  matInput readonly
+                  [matDatepicker]="picker"
+                  [(ngModel)]="element.endDate">
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
