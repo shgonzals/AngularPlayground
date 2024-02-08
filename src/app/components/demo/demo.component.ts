@@ -31,10 +31,10 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
       transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
     ]),
   ],
-  templateUrl: './table.component.html',
-  styleUrl: './table.component.scss'
+  templateUrl: './demo.component.html',
+  styleUrl: './demo.component.scss'
 })
-export class TableComponent implements AfterViewInit{
+export class DemoComponent implements AfterViewInit{
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   selection = new SelectionModel<PeriodicElement>(true, []);
 

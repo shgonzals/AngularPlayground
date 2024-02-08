@@ -17,6 +17,11 @@ import { DateAdapter, MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/mate
 import { MatSelectModule } from '@angular/material/select';
 import { LocalStorageService } from '../../services/local-storage.service';
 import {MatDividerModule} from '@angular/material/divider';
+import { FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-task',
@@ -40,10 +45,22 @@ import {MatDividerModule} from '@angular/material/divider';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    MatDividerModule
+    MatDividerModule,
+    ReactiveFormsModule
   ],
 })
 export class TaskComponent implements OnInit, AfterViewInit{
+
+
+  formGroup: FormGroup;
+  hideRequiredControl = new FormControl(false);
+
+  idControl = new FormControl();
+  nameControl = new FormControl('', Validators.required);
+  descriptionControl = new FormControl();
+  startDateControl = new FormControl('', Validators.required);
+  endDateControl = new FormControl();
+  statusControl = new FormControl();
 
   tasks: Task[] = [];
   dataSource = new MatTableDataSource<Task>(this.tasks);
@@ -55,6 +72,7 @@ export class TaskComponent implements OnInit, AfterViewInit{
 
   columnsToDisplay: string[] = ['id', 'name', 'description', 'startDate', 'endDate', 'status', 'action'];
 
+  valid: boolean = true;
   originalTask: Task | null = null;
   editMode: boolean = false;
   editedTask: Task | null = null;
@@ -65,10 +83,24 @@ export class TaskComponent implements OnInit, AfterViewInit{
     private _adapter: DateAdapter<any>,
     @Inject(MAT_DATE_LOCALE) private _locale: string,
     public localStorageService: LocalStorageService,
-    @Inject(DOCUMENT) document: Document) {
+    @Inject(DOCUMENT) document: Document,
+    fb: FormBuilder) {
     this._locale = 'es-ES';
     this._adapter.setLocale(this._locale);
     this.document = document;
+
+    //Deshabilitamos la edicion del id
+    this.idControl.disable();
+
+    this.formGroup = fb.group({
+      hideRequired: this.hideRequiredControl,
+      id: this.idControl,
+      name: this.nameControl,
+      description: this.descriptionControl,
+      startDate: this.startDateControl,
+      endDate: this.endDateControl,
+      status: this.statusControl
+    });
   }
 
   ngOnInit(): void {
@@ -140,5 +172,12 @@ export class TaskComponent implements OnInit, AfterViewInit{
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  getErrorMessage() {
+    if (this.nameControl.hasError('required') || this.startDateControl.hasError('required')) {
+      return 'Required';
+    }
+    return '';
   }
 }

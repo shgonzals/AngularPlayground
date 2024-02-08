@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { ListComponent } from './components/list/list.component';
 import { TaskComponent } from './components/task/task.component';
-import { TableComponent } from './components/table/table.component';
+import { DemoComponent } from './components/demo/demo.component';
 import { InitComponent } from './modules/init/init.component';
 
 export const routes: Routes = [
@@ -10,10 +10,10 @@ export const routes: Routes = [
     path: 'list',
     component: ListComponent
   },{
-    path: 'task',
+    path: 'tasks',
     component: TaskComponent
   },{
-    path: 'table',
-    component: TableComponent
+    path: 'demo',
+    component: DemoComponent
   }
 ];
