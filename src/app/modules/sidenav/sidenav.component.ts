@@ -41,10 +41,13 @@ export class SidenavComponent {
       icon: 'event_note',
       label: 'Tasks',
       route: 'tasks'
-    },{
+    }
+    /*
+    ,{
       icon: 'list',
       label: 'Demo',
-      route: 'table'
+      route: 'demo'
     }
+    */
   ];
 }
