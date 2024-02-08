@@ -10,7 +10,7 @@ export const routes: Routes = [
     path: 'list',
     component: ListComponent
   },{
-    path: 'task',
+    path: 'tasks',
     component: TaskComponent
   },{
     path: 'table',

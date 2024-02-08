@@ -7,13 +7,13 @@
         </div>
       </button>
       @if(!collapsed() && isAskifyVisible){
-        <span  style="color: white; font-size: larger; margin-left: 20px;">Taskify</span>
+        <span style="color: white; font-size: larger; margin-left: 20px;">Taskify</span>
       }
     </div>
     <mat-divider></mat-divider>
     <app-sidenav [collapsed]="collapsed()"  />
   </mat-sidenav>
   <mat-sidenav-content [style.margin-left.px]="collapsed() ? 55 : 250" [@fadeInOut] class="content">
-     <router-outlet ></router-outlet>
+     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

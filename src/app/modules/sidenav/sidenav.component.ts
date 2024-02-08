@@ -39,8 +39,8 @@ export class SidenavComponent {
       route: 'init'
     },{
       icon: 'event_note',
-      label: 'Task',
-      route: 'task'
+      label: 'Tasks',
+      route: 'tasks'
     },{
       icon: 'list',
       label: 'Demo',
