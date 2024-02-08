@@ -57,3 +57,23 @@ demo-table {
 .mat-column-expand {
   display: none;
 }
+
+.input{
+  height: 70px;
+  margin-top: 20px;
+  width: 150px;
+}
+
+.editingButtons{
+  margin: 5px;
+  color: white;
+}
+
+tr.mat-mdc-header-row{
+  background: #FF69B4;
+  color: white;
+}
+
+.table-container {
+  margin-bottom: 50px;
+}

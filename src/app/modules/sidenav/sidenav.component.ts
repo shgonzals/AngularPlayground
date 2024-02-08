@@ -46,9 +46,9 @@ export class SidenavComponent {
       label: 'Table',
       route: 'list'
     },{
-      icon: 'edit',
-      label: 'Test',
-      route: 'test'
+      icon: 'event_note',
+      label: 'Task',
+      route: 'task'
     }
   ];
 }
