@@ -8,10 +8,59 @@ mat-toolbar{
 }
 
 mat-sidenav-container{
-  height: calc(100vh - 64px);
+  height: -webkit-fill-available;
 }
 
 .mat-drawer-content{
   overflow: scroll;
+}
+
+.square {
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(45deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.t-symbol {
+  color: white;
+  font-family: sans-serif;
+  font-weight: 600;
+}
+
+.mat-divider{
+  background-color: #3b4c54;
+   margin-top: 25px;
+}
+
+.mat-sidenav{
+  background: #263238;
+}
+
+.toolbar{
+  background-color: #263238;
+  display: flex;
+  align-items: center;
+}
+
+
+.margin-left-20 {
+  margin-left: 20px;
+}
+
+.fade-in-out {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.fade-in {
+  opacity: 1;
 }
 

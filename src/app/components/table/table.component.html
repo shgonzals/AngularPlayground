@@ -46,19 +46,10 @@
           <th mat-header-cell *matHeaderCellDef>  </th>
           <td mat-cell *matCellDef="let element" style="text-align: right;">
 
-            <button mat-icon-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu">
-              <button mat-menu-item (click)="editData(element)">
-                <mat-icon>edit</mat-icon>
-                <span>Edit row</span>
-              </button>
-              <button mat-menu-item (click)="removeData(element)">
+
+              <button mat-icon-button (click)="removeData(element)">
                 <mat-icon>delete</mat-icon>
-                <span>Delete row</span>
               </button>
-            </mat-menu>
 
 
           </td>

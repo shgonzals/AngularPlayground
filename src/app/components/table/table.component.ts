@@ -2,14 +2,14 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTable, MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { PeriodicElement } from '../../models/PeriodicElement';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { PeriodicElement } from '../../models/periodic-element';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-table',
@@ -56,12 +56,10 @@ export class TableComponent implements AfterViewInit{
   }
 
   removeData(row?: PeriodicElement) {
-    debugger
     this.dataSource.data = this.dataSource.data.filter(item => item != row);
   }
 
   editData(row?: PeriodicElement) {
-    debugger
   }
 
   removeSelectedData() {
