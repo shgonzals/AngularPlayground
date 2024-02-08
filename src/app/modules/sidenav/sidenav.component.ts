@@ -38,17 +38,13 @@ export class SidenavComponent {
       label: 'Home',
       route: 'init'
     },{
-      icon: 'list',
-      label: 'List',
-      route: 'table'
-    },{
-      icon: 'list',
-      label: 'Table',
-      route: 'list'
-    },{
       icon: 'event_note',
       label: 'Task',
       route: 'task'
+    },{
+      icon: 'list',
+      label: 'Demo',
+      route: 'table'
     }
   ];
 }
