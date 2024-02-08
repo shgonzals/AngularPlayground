@@ -13,114 +13,149 @@
 
   <div class="mat-elevation-z8 demo-table">
     <table mat-table [dataSource]="dataSource">
+      <form [formGroup]="formGroup">
 
-      @for (column of columnsToDisplay; track column) {
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef style="text-transform: uppercase;"> ID </th>
+          <td mat-cell *matCellDef="let element">
+            @if(element.editing){
+              <mat-form-field class="input" style="width: 50px;">
+                  <input matInput [formControl]="idControl" [disabled]="true"
+                  [(ngModel)]="element.id">
+              </mat-form-field>
+            }@else {
+                {{element.id}}
+            }
+          </td>
+        </ng-container>
 
-        @switch (column) {
-          @case ('startDate') {
-            <ng-container matColumnDef="{{column}}">
-              <th mat-header-cell *matHeaderCellDef style="text-transform: uppercase;"> {{column}} </th>
-              <td mat-cell *matCellDef="let element">
-                @if(element.editing){
-                  <mat-form-field class="input">
-                    <input matInput [matDatepicker]="picker" [(ngModel)]="element[column]">
-                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                  </mat-form-field>
-                }@else {
-                  {{element[column] | date: 'dd/MM/yyyy'}}
-                }
-              </td>
-            </ng-container>
-          }
-          @case ('endDate') {
-            <ng-container matColumnDef="{{column}}">
-              <th mat-header-cell *matHeaderCellDef style="text-transform: uppercase;"> {{column}} </th>
-              <td mat-cell *matCellDef="let element">
-                @if(element.editing){
-                  <mat-form-field class="input">
-                    <input matInput [matDatepicker]="picker" [(ngModel)]="element[column]">
-                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                  </mat-form-field>
-                }@else {
-                  {{element[column] | date: 'dd/MM/yyyy'}}
-                }
-              </td>
-            </ng-container>
-          }
-          @case ('action') {
-            <ng-container matColumnDef="{{column}}">
-              <th mat-header-cell *matHeaderCellDef>  </th>
-              <td mat-cell *matCellDef="let element" style="text-align: right;">
-                @if (element.editing) {
-                  <div style="display: flow;">
-                      <button mat-mini-fab color="primary" class="editingButtons" (click)="save(element)" >
-                        <mat-icon>save</mat-icon>
-                      </button >
-                      <button mat-mini-fab color="warn" class="editingButtons" (click)="cancel(element)" >
-                        <mat-icon>cancel</mat-icon>
-                      </button>
-                  </div>
-                }@else {
-                  <button mat-icon-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()">
-                    <mat-icon>more_vert</mat-icon>
-                  </button>
-                  <mat-menu #menu="matMenu">
-                    <button mat-menu-item (click)="edit(element)">
-                      <mat-icon>edit</mat-icon>
-                      <span>Edit task</span>
-                    </button>
-                    <button mat-menu-item (click)="remove(element)">
-                      <mat-icon>delete</mat-icon>
-                      <span>Delete task</span>
-                    </button>
-                  </mat-menu>
-                }
-              </td>
-            </ng-container>
-          }
-          @default {
-            <ng-container matColumnDef="{{column}}">
-              <th mat-header-cell *matHeaderCellDef style="text-transform: uppercase;"> {{column}} </th>
-              <td mat-cell *matCellDef="let element" >
-                @if(element.editing){
-                  <mat-form-field class="input"
-                  [style.width.px]="column === 'id' ? 50 : 120">
-                    @if(column === 'status'){
-                      <mat-select [(value)]="element[column]">
-                        @for (option of status; track option) {
-                          <mat-option [value]="option.key">{{ option.value }}</mat-option>
-                        }
-                      </mat-select>
-                    }@else{
-                      <input matInput
-                      [(ngModel)]="element[column]"
-                      [disabled]="column === 'id'"
-                      >
-                    }
+         <!-- NAME Column -->
+         <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef style="text-transform: uppercase;"> NAME </th>
+          <td mat-cell *matCellDef="let element">
+            @if(element.editing){
+              <mat-form-field class="input" style="width: 120px;">
+                  <input matInput [formControl]="nameControl" required
+                  [(ngModel)]="element.name">
+                  @if(nameControl.invalid){
+                    <mat-error>{{getErrorMessage()}}</mat-error>
+                  }
+              </mat-form-field>
+            }@else {
+                {{element.name}}
+            }
+          </td>
+        </ng-container>
 
-                  </mat-form-field>
-                }@else {
-                  @if(column === 'status'){
+
+         <!-- DESCRIPTION Column -->
+         <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef style="text-transform: uppercase;"> DESCRIPTION</th>
+          <td mat-cell *matCellDef="let element">
+            @if(element.editing){
+              <mat-form-field class="input" style="width: 120px;">
+                  <input matInput [formControl]="descriptionControl"
+                  [(ngModel)]="element.description">
+              </mat-form-field>
+            }@else {
+                {{element.description}}
+            }
+          </td>
+        </ng-container>
+
+        <!-- START DATE Column -->
+        <ng-container matColumnDef="startDate">
+          <th mat-header-cell *matHeaderCellDef style="text-transform: uppercase;"> START DATE</th>
+          <td mat-cell *matCellDef="let element">
+            @if(element.editing){
+              <mat-form-field class="input">
+                <input [formControl]="startDateControl" matInput required [matDatepicker]="picker" [(ngModel)]="element.startDate">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+
+                @if(startDateControl.invalid){
+                  <mat-error>{{getErrorMessage()}}</mat-error>
+                }
+
+              </mat-form-field>
+            }@else {
+              {{element.startDate | date: 'dd/MM/yyyy'}}
+            }
+          </td>
+        </ng-container>
+
+        <!-- END DATE Column -->
+        <ng-container matColumnDef="endDate">
+          <th mat-header-cell *matHeaderCellDef style="text-transform: uppercase;"> END DATE</th>
+          <td mat-cell *matCellDef="let element">
+            @if(element.editing){
+              <mat-form-field class="input">
+                <input [formControl]="endDateControl" matInput [matDatepicker]="picker" [(ngModel)]="element.endDate">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+
+            }@else {
+              {{element.endDate | date: 'dd/MM/yyyy'}}
+            }
+          </td>
+        </ng-container>
+
+        <!-- STATUS Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef style="text-transform: uppercase;"> STATUS</th>
+          <td mat-cell *matCellDef="let element">
+            @if(element.editing){
+              <mat-form-field class="input">
+                  <mat-select [(value)]="element.status">
                     @for (option of status; track option) {
-                      @if (option.key === element[column]) {
-                        {{ option.value }}
-                      }
+                      <mat-option [value]="option.key">{{ option.value }}</mat-option>
                     }
-                  }@else {
-                    {{element[column]}}
+                  </mat-select>
+              </mat-form-field>
+            }@else {
+                @for (option of status; track option) {
+                  @if (option.key === element.status) {
+                    {{ option.value }}
                   }
                 }
+            }
+          </td>
+        </ng-container>
 
-              </td>
+        <!-- ACTION Column -->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef style="text-transform: uppercase;"> </th>
+          <td mat-cell *matCellDef="let element">
+            @if (element.editing) {
+              <div style="display: flow;">
+                  <button mat-mini-fab color="primary" class="editingButtons" [disabled]="!formGroup.valid" (click)="save(element)" >
+                    <mat-icon>save</mat-icon>
+                  </button >
+                  <button mat-mini-fab color="warn" class="editingButtons" (click)="cancel(element)" >
+                    <mat-icon>cancel</mat-icon>
+                  </button>
+              </div>
+            }@else {
+              <button mat-icon-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="edit(element)">
+                  <mat-icon>edit</mat-icon>
+                  <span>Edit task</span>
+                </button>
+                <button mat-menu-item (click)="remove(element)">
+                  <mat-icon>delete</mat-icon>
+                  <span>Delete task</span>
+                </button>
+              </mat-menu>
+            }
+          </td>
+        </ng-container>
 
-            </ng-container>
-          }
-        }
-
-      }
-
+      </form>
       <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
       <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
 
