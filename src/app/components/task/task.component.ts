@@ -22,6 +22,7 @@ import { FormControl } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { LoggerService } from 'core/logger';
 
 @Component({
   selector: 'app-task',
@@ -67,7 +68,10 @@ export class TaskComponent implements OnInit, AfterViewInit{
 
   status: Status[] = [
     {key: 'N', value: 'New'},
-    {key: 'O', value: 'Old'}
+    {key: 'S', value: 'Started'},
+    {key: 'I', value: 'In progress'},
+    {key: 'D', value: 'Done'},
+    {key: 'S', value: 'Stopped'}
   ];
 
   columnsToDisplay: string[] = ['id', 'name', 'description', 'startDate', 'endDate', 'status', 'action'];
@@ -84,7 +88,8 @@ export class TaskComponent implements OnInit, AfterViewInit{
     @Inject(MAT_DATE_LOCALE) private _locale: string,
     public localStorageService: LocalStorageService,
     @Inject(DOCUMENT) document: Document,
-    fb: FormBuilder) {
+    fb: FormBuilder,
+    public loggerService: LoggerService) {
     this._locale = 'es-ES';
     this._adapter.setLocale(this._locale);
     this.document = document;
@@ -105,6 +110,7 @@ export class TaskComponent implements OnInit, AfterViewInit{
 
   ngOnInit(): void {
     this.reloadData();
+    this.loggerService.log("LOGGER-LIB WORKS!");
   }
 
   ngAfterViewInit() {
